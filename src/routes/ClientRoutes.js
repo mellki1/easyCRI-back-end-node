@@ -2,10 +2,10 @@ const express = require('express');
 const routes = express.Router();
 
 //importanção dos controllers
-const clientesController = require('./../controllers/ClienteController');
+const clientesController = require('../controllers/ClientController');
 
 //Adicionando cliente
-routes.post('/clientes', clientesController.createClient);
+routes.post('/clientes', clientesController.createClientPF);
 
 /*
 //Listando todos os clientes
