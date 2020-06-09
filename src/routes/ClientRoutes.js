@@ -5,7 +5,7 @@ const routes = express.Router();
 const clientesController = require('../controllers/ClientController');
 
 //Adicionando cliente
-routes.post('/clientes', clientesController.createClientPF);
+routes.post('/clientes', clientesController.createClients);
 
 /*
 //Listando todos os clientes

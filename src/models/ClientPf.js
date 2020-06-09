@@ -54,9 +54,14 @@ const ClientPfSchema = mongoose.Schema({
     },
     telefone: {
         type: String
+    },
+    tipo: {
+        type: String,
+        enum: ['PESSOA_FISICA', 'PESSOA_JURIDICA'],
+        default: 'PESSOA_FISICA'
     }
 }
 );
 
 //Coleção no banco de dados mongo
-module.exports = mongoose.model('clientes', ClientPfSchema);
+module.exports = mongoose.model('clientePf', ClientPfSchema);

@@ -1,38 +1,72 @@
 const Client = require('../models/ClientPf');
-const cpfVerification = require('node-cpf');
+const cpfandCnpjVerification = require('node-cpf');
+
+
+async function createClientsPf(request, response) {
+    const { nome, nacionalidade, estadoCivil, profissao, identidade, orgaoEmissor, estadoEmissor, cpf, sexo, nomePai, nomeMae, endereco, email, telefone, tipoCliente } = request.body;
+
+    //Verificando se o CPF é válido
+    if (cpfandCnpjVerification.validate(cpf)) {
+        await new Client({
+            nome,
+            nacionalidade,
+            estadoCivil,
+            profissao,
+            identidade,
+            orgaoEmissor,
+            estadoEmissor,
+            cpf,
+            sexo,
+            nomePai,
+            nomeMae,
+            endereco,
+            email,
+            telefone,
+            tipoCliente
+        }).save().then(() => {
+            return response.status(200).json({message: 'Cliente ' + nome + ' cadastrado com sucesso!'});
+        }).catch((err) => {
+            return response.status(500).json({message: 'Cliente ' + nome + ' não cadastrado cadastrado! Erro: ' + err});
+        });
+    } else {
+        return response.json("CPF inválido!");
+    }
+}
+
+async function  createClientsPj (request, response) {
+    const { cnpj, razaoSocial, enderecoSede, email, telefone, tipo } = request.body;
+
+    //Verificando se o CPF é válido
+    if (cpfandCnpjVerification.validate(cnpj)) {
+        await new Client({
+            cnpj,
+            razaoSocial,
+            enderecoSede,
+            email,
+            telefone,
+            tipo
+
+        }).save().then(() => {
+            return response.status(200).json({message: 'Cliente ' + razaoSocial + ' cadastrado com sucesso!'});
+        }).catch((err) => {
+            return response.status(500).json({message: 'Cliente ' + razaoSocial + ' não cadastrado cadastrado! Erro: ' + err});
+        });
+    } else {
+        return response.json("CPF inválido!");
+    }
+}
 
 module.exports = {
 
     //criando clientesPF
-    async createClientPF(request, response) {
-        const { nome, nacionalidade, estadoCivil, profissao, identidade, orgaoEmissor, estadoEmissor, cpf, sexo, nomePai, nomeMae, endereco, email, telefone } = request.body;
-
-        //Verificando se o CPF é válido
-        if (cpfVerification.validate(cpf)){
-            await new Client({
-                nome,
-                nacionalidade,
-                estadoCivil,
-                profissao,
-                identidade,
-                orgaoEmissor,
-                estadoEmissor,
-                cpf,
-                sexo,
-                nomePai,
-                nomeMae,
-                endereco,
-                email,
-                telefone,
-            }).save().then(() => {
-                return response.json("Cliente " + nome + " cadastrado com sucesso!");
-            }).catch((err) => {
-                return response.json("Cliente " + nome + " não cadastrado cadastrado! Erro: " + err);
-            });
+    async createClients(request, response) {
+        const tipo = request.body.tipo;
+        if (tipo == "PESSOA_FISICA") {
+            createClientsPf(request, response);
         } else {
-            return response.json("CPF inválido!");
+            createClientsPj(request, response);
         }
-},
+    }
     /*
         //listando todos os Clientes
         async listAllClients(request, response) {
