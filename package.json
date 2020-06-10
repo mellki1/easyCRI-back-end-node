@@ -12,9 +12,9 @@
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.17.1",
+    "js-brasil": "^2.1.0",
     "mongoose": "^5.9.17",
-    "mysql2": "^2.1.0",
-    "node-cpf": "^1.0.21"
+    "mysql2": "^2.1.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.4"

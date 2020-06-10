@@ -17,12 +17,60 @@ const ClientesSchema = Schema({
         type: String
     },
     clientePf: {
-        type: Schema.Types.ObjectId,
-        ref: 'clientePf'
+        cpf: {
+            type: String,
+            unique: true,
+            require: true
+        },
+        nome: {
+            type: String,
+            require: true
+        },
+        nacionalidade: {
+            type: String,
+            require: true
+        },
+        estadoCivil: {
+            type: String,
+            require: true
+        },
+        profissao: {
+            type: String,
+            require: true
+        },
+        identidade: {
+            type: String,
+            require: true
+        },
+        orgaoEmissor: {
+            type: String,
+            require: true
+        },
+        estadoEmissor: {
+            type: String,
+            require: true
+        },
+        sexo: {
+            type: String,
+            require: true
+        },
+        nomePai: {
+            type: String
+        },
+        nomeMae: {
+            type: String
+        }
     },
     clientePj: {
-        type: Schema.Types.ObjectId,
-        ref: 'clientePj'
+        cnpj: {
+            type: String,
+            unique: true,
+            require: true
+        },
+        razaoSocial: {
+            type: String,
+            require: true
+        }
     }
 }
 );
