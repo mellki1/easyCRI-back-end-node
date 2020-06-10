@@ -1,7 +1,7 @@
-const mongoose = require('mongoose');
+const {Schema, model} = require('mongoose');
 
 //Modelo de cliente
-const ClientPfSchema = mongoose.Schema({
+const ClientePfSchema = Schema({
     cpf: {
         type: String,
         unique: true,
@@ -44,24 +44,9 @@ const ClientPfSchema = mongoose.Schema({
     },
     nomeMae: {
         type: String
-    },
-    endereco: {
-        type: String,
-        require: true
-    },
-    email: {
-        type: String
-    },
-    telefone: {
-        type: String
-    },
-    tipo: {
-        type: String,
-        enum: ['PESSOA_FISICA', 'PESSOA_JURIDICA'],
-        default: 'PESSOA_FISICA'
     }
 }
 );
-
+const clientePf = model('clientePf', ClientePfSchema);
 //Coleção no banco de dados mongo
-module.exports = mongoose.model('clientePf', ClientPfSchema);
+module.exports = clientePf;

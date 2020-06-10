@@ -5,13 +5,13 @@ const routes = express.Router();
 const clientesController = require('../controllers/ClientController');
 
 //Adicionando cliente
-routes.post('/clientes', clientesController.createClients);
+routes.post('/clientes', clientesController.createClientes);
 
-/*
+
 //Listando todos os clientes
-routes.get('/clientes', clientesController.listAllCientes);
+routes.get('/clientes', clientesController.listAllClientes);
 
 
 routes.get('/clientes/id', )
-*/
+
 module.exports = routes;
