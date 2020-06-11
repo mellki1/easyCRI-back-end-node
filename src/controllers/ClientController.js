@@ -13,7 +13,6 @@ module.exports = {
             if (tipo == "PESSOA_FISICA") {
                 //Criando Cliente PF
                 //Verificação de CPF
-                console.log(request.body.clientePf.cpf);
                 if (validateBr.cpf(request.body.clientePf.cpf)) {
 
                     //const newClientesPf = await ClientesPf.create(request.body);
