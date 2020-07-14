@@ -9,14 +9,14 @@ module.exports = {
     async createClientes(request, response) {
         try {
             const tipo = request.body.tipo;
-
+            const data = request.body;
+            console.log(data);
             if (tipo == "PESSOA_FISICA") {
                 //Criando Cliente PF
                 //Verificação de CPF
                 if (validateBr.cpf(request.body.clientePf.cpf)) {
 
-                    //const newClientesPf = await ClientesPf.create(request.body);
-                    const newClientPf = await Cliente.create(request.body);
+                    const newClientPf = await Cliente.create(data);
 
                     return response.send({ newClientPf });
                 } else {

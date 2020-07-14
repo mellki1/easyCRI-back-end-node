@@ -1,6 +1,7 @@
 const {Schema, model} = require('mongoose');
+
 //Modelo de cliente
-const ClientesSchema = Schema({
+const ClientesSchema = new Schema({
     tipo: {
         type: String,
         enum: ['PESSOA_FISICA', 'PESSOA_JURIDICA'],
@@ -75,6 +76,6 @@ const ClientesSchema = Schema({
 }
 );
 
-const cliente = model('cliente', ClientesSchema);
+const clientes = model('clientes', ClientesSchema);
 //Coleção no banco de dados mongo
-module.exports = cliente;
+module.exports = clientes;
