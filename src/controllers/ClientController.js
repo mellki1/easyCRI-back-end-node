@@ -35,6 +35,7 @@ module.exports = {
                 }
             }
         } catch (error) {
+            console.log('Erro ao criar novo usuario... Erro: ' + error);
             return response.status(400).send({ error: 'Erro ao criar novo usuario... Erro: ' }+ error);
         }
     },

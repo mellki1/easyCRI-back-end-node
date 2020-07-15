@@ -8,8 +8,27 @@ const ClientesSchema = new Schema({
         default: 'PESSOA_FISICA'
     },
     endereco: {
-        type: String,
-        require: true
+        logradouro: {
+            type: String,
+            require: true
+        },
+        numero: {
+            type: String,
+            require: true
+        },
+        bairro: {
+            type: String,
+            require: true
+        },
+        cidade: {
+            type: String,
+            require: true
+        },
+        uf: {
+            type: String,
+            require: true
+        }
+        
     },
     email: {
         type: String
@@ -64,13 +83,10 @@ const ClientesSchema = new Schema({
     },
     clientePj: {
         cnpj: {
-            type: String,
-            unique: true,
-            require: true
+            type: String
         },
         razaoSocial: {
-            type: String,
-            require: true
+            type: String
         }
     }
 }

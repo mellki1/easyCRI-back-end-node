@@ -1,0 +1,31 @@
+GET http://localhost:3333/clientes HTTP/1.1
+
+###
+
+POST http://localhost:3333/clientes HTTP/1.1
+content-type: application/json
+
+{
+  "tipo": "PESSOA_FISICA",
+  "endereco": {
+      "logradouro": "a",
+      "numero": "a",
+      "bairro": "a",
+      "cidade": "a",
+      "uf": "aa" 
+},
+  "email": "a@a.com",
+  "telefone": "(34)",
+    "clientePf": {
+        "cpf": "679.801.910-21",
+        "nome": "a",
+        "nacionalidade": "brasileiro",
+        "estadoCivil": "solteiro",
+        "profissao": "a",
+        "documentoIdentificacao": "a",
+        "tipoDocumento": "identidade",
+        "sexo": "sexo_masculino",
+        "nomePai": "a",
+        "nomeMae": "a"
+    }
+}
