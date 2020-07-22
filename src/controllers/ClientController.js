@@ -10,7 +10,6 @@ module.exports = {
         try {
             const tipo = request.body.tipo;
             const data = request.body;
-            console.log(data);
             if (tipo == "PESSOA_FISICA") {
                 //Criando Cliente PF
                 //Verificação de CPF
@@ -34,9 +33,14 @@ module.exports = {
                     return response.status(400).send({ error: 'CNPJ inválido' });
                 }
             }
-        } catch (error) {
-            console.log('Erro ao criar novo usuario... Erro: ' + error);
-            return response.status(400).send({ error: 'Erro ao criar novo usuario... Erro: ' }+ error);
+        } catch (err) {
+            
+            if(err.name === 'MongoError' && err.message.includes('clientePf.cpf_1 dup key')){
+                return response.status(400).send({ error: 'CPF já cadastrado' });
+            }else{
+                return response.status(400).send({ error: 'Erro ao criar novo usuario... Erro: ' } + error);
+            }
+            
         }
     },
 
