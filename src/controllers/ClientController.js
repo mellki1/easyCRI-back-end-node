@@ -36,7 +36,7 @@ module.exports = {
         } catch (err) {
             
             if(err.name === 'MongoError' && err.message.includes('clientePf.cpf_1 dup key')){
-                return response.status(400).send({ error: 'CPF já cadastrado' });
+                return response.status(400).send({ error: 'CPF já cadastrado, tente novamente' });
             }else{
                 return response.status(400).send({ error: 'Erro ao criar novo usuario... Erro: ' } + error);
             }
