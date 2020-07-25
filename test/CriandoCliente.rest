@@ -17,7 +17,7 @@ content-type: application/json
   "email": "a@a.com",
   "telefone": "(34)",
     "clientePf": {
-        "cpf": "679.801.910-21",
+        "cpf": "794.587.270-06",
         "nome": "a",
         "nacionalidade": "brasileiro",
         "estadoCivil": "solteiro",

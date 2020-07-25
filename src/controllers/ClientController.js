@@ -50,7 +50,7 @@ module.exports = {
             const { page = 1 } = request.query;
 
 
-            const clientes = await Cliente.find().limit(5).skip(((page - 1) * 5));
+            const clientes = await Cliente.find();
 
             return response.send({ clientes });
         } catch (error) {

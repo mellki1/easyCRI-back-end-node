@@ -58,15 +58,11 @@ const ClientesSchema = new Schema({
             type: String,
             require: true
         },
-        identidade: {
+        documentoIdentificacao: {
             type: String,
             require: true
         },
-        orgaoEmissor: {
-            type: String,
-            require: true
-        },
-        estadoEmissor: {
+        tipoDocumento: {
             type: String,
             require: true
         },
