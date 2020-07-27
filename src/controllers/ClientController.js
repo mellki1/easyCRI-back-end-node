@@ -47,7 +47,7 @@ module.exports = {
     //listando todos os Clientes
     async listAllClientes(request, response) {
         try {
-            const { page = 1 } = request.query;
+        
 
 
             const clientes = await Cliente.find();
@@ -72,10 +72,10 @@ module.exports = {
 
     //Listando Clients por cpf
     async listClientesByCpf(request, response) {
-
+        
         try {
-            const clientes = await Cliente.find({'clientePf.cpf': request.params.cpf});
-
+            const clientes = await (await Cliente.find({'clientePf.cpf': new RegExp(request.params.cpf,'i') }))
+            console.log(clientes);
             return response.send({ clientes });
         } catch (error) {
             return response.status(400).send({ error: 'Erro ao listar clientes... Erro: ' + error });
