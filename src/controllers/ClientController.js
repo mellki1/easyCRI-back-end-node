@@ -5,18 +5,16 @@ const { validateBr } = require('js-brasil');
 
 module.exports = {
 
-    //criando clientesPF
     async createClientes(request, response) {
         try {
             const tipo = request.body.tipo;
             const data = request.body;
+            //criando clientesPF
             if (tipo == "PESSOA_FISICA") {
                 //Criando Cliente PF
                 //Verificação de CPF
                 if (validateBr.cpf(request.body.clientePf.cpf)) {
-
                     const newClientPf = await Cliente.create(data);
-
                     return response.send({ newClientPf });
                 } else {
                     return response.status(400).send({ error: 'CPF inválido' });
@@ -25,9 +23,7 @@ module.exports = {
             } else if (tipo == "PESSOA_JURIDICA") {
                 //Criando Cliente PJ
                 if (validateBr.cnpj(request.body.clientePj.cnpj)) {
-
                     const newClientesPj = await Cliente.create(request.body);
-
                     return response.send({ newClientesPj });
                 } else {
                     return response.status(400).send({ error: 'CNPJ inválido' });
@@ -45,13 +41,9 @@ module.exports = {
     },
 
     //listando todos os Clientes
-    async listAllClientes(request, response) {
+    async listAllClientes(response) {
         try {
-        
-
-
             const clientes = await Cliente.find();
-
             return response.send({ clientes });
         } catch (error) {
             return response.status(400).send({ error: 'Erro ao listar clientes' });
